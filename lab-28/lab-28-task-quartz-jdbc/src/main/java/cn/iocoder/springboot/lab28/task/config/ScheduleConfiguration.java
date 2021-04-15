@@ -16,6 +16,7 @@ public class ScheduleConfiguration {
             return JobBuilder.newJob(DemoJob01.class)
                     .withIdentity("demoJob01") // 名字为 demoJob01
                     .storeDurably() // 没有 Trigger 关联的时候任务是否被保留。因为创建 JobDetail 时，还没 Trigger 指向它，所以需要设置为 true ，表示保留。
+                    .requestRecovery(true)
                     .build();
         }
 
@@ -42,13 +43,20 @@ public class ScheduleConfiguration {
             return JobBuilder.newJob(DemoJob02.class)
                     .withIdentity("demoJob02") // 名字为 demoJob02
                     .storeDurably() // 没有 Trigger 关联的时候任务是否被保留。因为创建 JobDetail 时，还没 Trigger 指向它，所以需要设置为 true ，表示保留。
+                    .requestRecovery(true)
                     .build();
         }
 
         @Bean
         public Trigger demoJob02Trigger() {
             // 简单的调度计划的构造器
-            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ? *");
+//            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ? *");
+
+            // 简单的调度计划的构造器
+            SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
+                    .withIntervalInSeconds(5) // 频率。
+                    .repeatForever(); // 次数。
+
             // Trigger 构造器
             return TriggerBuilder.newTrigger()
                     .forJob(demoJob02()) // 对应 Job 为 demoJob02

@@ -35,7 +35,7 @@
 <!--        <module>lab-25</module>-->
 <!--        <module>lab-26</module>-->
 <!--        <module>lab-27</module>-->
-<!--        <module>lab-28</module>-->
+        <module>lab-28</module>
 <!--        <module>lab-29</module>-->
 <!--        <module>lab-30</module>-->
 <!--        <module>lab-31</module>-->
@@ -111,7 +111,7 @@
 <!--        <module>labx-28</module>-->
 <!--        <module>labx-29-spring-cloud-consul-bus</module>-->
 <!--        <module>labx-30-spring-cloud-grpc</module>-->
-        <module>lab-71-http-debug</module>
+<!--        <module>lab-71-http-debug</module>-->
     </modules>
 
 </project>

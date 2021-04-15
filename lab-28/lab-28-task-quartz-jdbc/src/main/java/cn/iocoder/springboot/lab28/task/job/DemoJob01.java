@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+import java.util.Date;
+
 @DisallowConcurrentExecution
 public class DemoJob01 extends QuartzJobBean {
 
@@ -18,7 +20,7 @@ public class DemoJob01 extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext context) {
-        logger.info("[executeInternal][我开始的执行了, demoService 为 ({})]", demoService);
+        logger.info("[111111][我开始的执行了, demoService 为 ({})]" + (new Date()), demoService);
     }
 
 }
